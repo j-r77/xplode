@@ -1,0 +1,232 @@
+//CFD0: (education=Some-college, relationship=Husband) => sex=Male
+c0: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "Some-college", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD1: (workclass=Self-emp-inc, relationship=Husband) => maritalstatus=Married-civ-spouse
+c1: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Self-emp-inc", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD2: (occupation=Other-service, relationship=Husband) => maritalstatus=Married-civ-spouse
+c2: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Other-service", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD3: (race=Black, relationship=Husband) => sex=Male
+c3: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "Black", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD4: (sex=Male, country=United-States, education=HS-grad, age=18-21) => income=LessThan50K
+c4: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $h1 == "Male", $j1 == "United-States", $c1 == "HS-grad", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD5: (occupation=Craft-repair, relationship=Husband) => sex=Male
+c5: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Craft-repair", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD6: (relationship=Husband, occupation=Tech-support) => sex=Male
+c6: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $e1 == "Tech-support", $h1 != "Male" -> #fail.
+//CFD7: (hoursperweek=40, relationship=Wife, age=31-50) => sex=Female
+c7: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $f1 == "Wife", $a1 == "31-50", $h1 != "Female" -> #fail.
+//CFD8: (workclass=Self-emp-inc, relationship=Husband) => sex=Male
+c8: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Self-emp-inc", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD9: (occupation=Adm-clerical, relationship=Husband) => sex=Male
+c9: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Adm-clerical", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD10: (relationship=Husband, education=Assoc-acdm) => sex=Male
+c10: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Assoc-acdm", $h1 != "Male" -> #fail.
+//CFD11: (hoursperweek=40, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c11: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD12: (relationship=Husband, workclass=State-gov) => maritalstatus=Married-civ-spouse
+c12: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $b1 == "State-gov", $d1 != "Married-civ-spouse" -> #fail.
+//CFD13: (relationship=Husband, workclass=State-gov) => sex=Male
+c13: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $b1 == "State-gov", $h1 != "Male" -> #fail.
+//CFD14: (hoursperweek=45, relationship=Husband) => maritalstatus=Married-civ-spouse
+c14: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "45", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD15: (occupation=Machine-op-inspct, relationship=Husband) => sex=Male
+c15: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Machine-op-inspct", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD16: (education=HS-grad, relationship=Husband, income=MoreThan50K, age=31-50) => maritalstatus=Married-civ-spouse
+c16: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "HS-grad", $f1 == "Husband", $k1 == "MoreThan50K", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD17: (occupation=Sales, age=18-21) => income=LessThan50K
+c17: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Sales", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD18: (workclass=Private, hoursperweek=50, relationship=Husband) => maritalstatus=Married-civ-spouse
+c18: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $i1 == "50", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD19: (relationship=Husband, education=Prof-school) => maritalstatus=Married-civ-spouse
+c19: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Prof-school", $d1 != "Married-civ-spouse" -> #fail.
+//CFD20: (relationship=Husband, education=Bachelors) => sex=Male
+c20: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Bachelors", $h1 != "Male" -> #fail.
+//CFD21: (relationship=Husband, hoursperweek=55) => sex=Male
+c21: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $i1 == "55", $h1 != "Male" -> #fail.
+//CFD22: (occupation=?, relationship=Own-child, age=18-21) => income=LessThan50K
+c22: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "?", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD23: (occupation=Adm-clerical, relationship=Wife) => sex=Female
+c23: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Adm-clerical", $f1 == "Wife", $h1 != "Female" -> #fail.
+//CFD24: (workclass=Private, income=LessThan50K, education=HS-grad, occupation=Craft-repair, relationship=Husband) => maritalstatus=Married-civ-spouse
+c24: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $k1 == "LessThan50K", $c1 == "HS-grad", $e1 == "Craft-repair", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD25: (income=LessThan50K, hoursperweek=50, relationship=Husband) => maritalstatus=Married-civ-spouse
+c25: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $k1 == "LessThan50K", $i1 == "50", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD26: (occupation=Exec-managerial, relationship=Husband) => maritalstatus=Married-civ-spouse
+c26: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Exec-managerial", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD27: (hoursperweek=40, country=United-States, education=HS-grad, age=18-21) => income=LessThan50K
+c27: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $j1 == "United-States", $c1 == "HS-grad", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD28: (maritalstatus=Never-married, relationship=Own-child, sex=Female, occupation=Other-service) => income=LessThan50K
+c28: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $f1 == "Own-child", $h1 == "Female", $e1 == "Other-service", $k1 != "LessThan50K" -> #fail.
+//CFD29: (relationship=Husband, education=Prof-school) => sex=Male
+c29: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Prof-school", $h1 != "Male" -> #fail.
+//CFD30: (workclass=Private, education=HS-grad, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c30: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $c1 == "HS-grad", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD31: (occupation=Farming-fishing, relationship=Husband) => sex=Male
+c31: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Farming-fishing", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD32: (income=LessThan50K, occupation=Farming-fishing, relationship=Husband) => maritalstatus=Married-civ-spouse
+c32: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $k1 == "LessThan50K", $e1 == "Farming-fishing", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD33: (occupation=?, relationship=Husband) => sex=Male
+c33: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "?", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD34: (occupation=Sales, education=Some-college, relationship=Husband) => maritalstatus=Married-civ-spouse
+c34: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Sales", $c1 == "Some-college", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD35: (occupation=Sales, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c35: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Sales", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD36: (hoursperweek=40, income=LessThan50K, occupation=Craft-repair, relationship=Husband) => maritalstatus=Married-civ-spouse
+c36: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $k1 == "LessThan50K", $e1 == "Craft-repair", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD37: (education=Some-college, relationship=Husband, income=MoreThan50K) => maritalstatus=Married-civ-spouse
+c37: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "Some-college", $f1 == "Husband", $k1 == "MoreThan50K", $d1 != "Married-civ-spouse" -> #fail.
+//CFD38: (income=LessThan50K, occupation=Prof-specialty, relationship=Husband) => maritalstatus=Married-civ-spouse
+c38: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $k1 == "LessThan50K", $e1 == "Prof-specialty", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD39: (workclass=Local-gov, relationship=Husband) => sex=Male
+c39: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Local-gov", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD40: (hoursperweek=45, relationship=Husband) => sex=Male
+c40: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "45", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD41: (hoursperweek=50, relationship=Husband) => sex=Male
+c41: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "50", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD42: (relationship=Husband, age=22-30) => sex=Male
+c42: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $a1 == "22-30", $h1 != "Male" -> #fail.
+//CFD43: (workclass=Private, occupation=Prof-specialty, relationship=Husband) => maritalstatus=Married-civ-spouse
+c43: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $e1 == "Prof-specialty", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD44: (maritalstatus=Never-married, sex=Male, education=Some-college, age=18-21) => income=LessThan50K
+c44: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $h1 == "Male", $c1 == "Some-college", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD45: (education=HS-grad, hoursperweek=50, relationship=Husband) => maritalstatus=Married-civ-spouse
+c45: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "HS-grad", $i1 == "50", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD46: (relationship=Husband, education=Assoc-voc, age=31-50) => maritalstatus=Married-civ-spouse
+c46: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Assoc-voc", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD47: (relationship=Husband, hoursperweek=60, age=31-50) => maritalstatus=Married-civ-spouse
+c47: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $i1 == "60", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD48: (relationship=Husband, occupation=Tech-support) => maritalstatus=Married-civ-spouse
+c48: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $e1 == "Tech-support", $d1 != "Married-civ-spouse" -> #fail.
+//CFD49: (maritalstatus=Never-married, occupation=?, age=18-21) => income=LessThan50K
+c49: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $e1 == "?", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD50: (occupation=Protective-serv, relationship=Husband) => sex=Male
+c50: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Protective-serv", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD51: (maritalstatus=Never-married, country=United-States, workclass=?, relationship=Own-child) => income=LessThan50K
+c51: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $j1 == "United-States", $b1 == "?", $f1 == "Own-child", $k1 != "LessThan50K" -> #fail.
+//CFD52: (maritalstatus=Never-married, hoursperweek=40, relationship=Own-child, age=18-21) => income=LessThan50K
+c52: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $i1 == "40", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD53: (occupation=Machine-op-inspct, race=White, relationship=Husband) => maritalstatus=Married-civ-spouse
+c53: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Machine-op-inspct", $g1 == "White", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD54: (race=White, relationship=Own-child, occupation=Other-service, age=18-21) => income=LessThan50K
+c54: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "White", $f1 == "Own-child", $e1 == "Other-service", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD55: (occupation=Prof-specialty, relationship=Husband) => sex=Male
+c55: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Prof-specialty", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD56: (occupation=Other-service, relationship=Husband) => sex=Male
+c56: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Other-service", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD57: (relationship=Husband, education=Assoc-acdm) => maritalstatus=Married-civ-spouse
+c57: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Assoc-acdm", $d1 != "Married-civ-spouse" -> #fail.
+//CFD58: (race=White, workclass=?, relationship=Husband) => maritalstatus=Married-civ-spouse
+c58: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "White", $b1 == "?", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD59: (relationship=Husband, education=Assoc-voc) => sex=Male
+c59: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Assoc-voc", $h1 != "Male" -> #fail.
+//CFD60: (hoursperweek=40, occupation=Sales, relationship=Husband) => maritalstatus=Married-civ-spouse
+c60: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $e1 == "Sales", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD61: (hoursperweek=40, workclass=Self-emp-not-inc, relationship=Husband) => maritalstatus=Married-civ-spouse
+c61: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $b1 == "Self-emp-not-inc", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD62: (income=LessThan50K, relationship=Husband, education=Assoc-voc) => maritalstatus=Married-civ-spouse
+c62: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $k1 == "LessThan50K", $f1 == "Husband", $c1 == "Assoc-voc", $d1 != "Married-civ-spouse" -> #fail.
+//CFD63: (hoursperweek=40, country=United-States, relationship=Own-child, age=18-21) => income=LessThan50K
+c63: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $j1 == "United-States", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD64: (country=United-States, relationship=Wife, age=31-50) => sex=Female
+c64: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $j1 == "United-States", $f1 == "Wife", $a1 == "31-50", $h1 != "Female" -> #fail.
+//CFD65: (race=White, hoursperweek=40, income=LessThan50K, education=HS-grad, relationship=Husband) => maritalstatus=Married-civ-spouse
+c65: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "White", $i1 == "40", $k1 == "LessThan50K", $c1 == "HS-grad", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD66: (race=White, occupation=?, relationship=Husband) => maritalstatus=Married-civ-spouse
+c66: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "White", $e1 == "?", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD67: (maritalstatus=Never-married, workclass=?, age=18-21) => income=LessThan50K
+c67: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $b1 == "?", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD68: (education=HS-grad, relationship=Wife) => sex=Female
+c68: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "HS-grad", $f1 == "Wife", $h1 != "Female" -> #fail.
+//CFD69: (relationship=Husband, age=>50) => maritalstatus=Married-civ-spouse
+c69: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $a1 == ">50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD70: (relationship=Husband, hoursperweek=60) => sex=Male
+c70: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $i1 == "60", $h1 != "Male" -> #fail.
+//CFD71: (sex=Male, relationship=Own-child, education=Some-college, age=18-21) => income=LessThan50K
+c71: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $h1 == "Male", $f1 == "Own-child", $c1 == "Some-college", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD72: (workclass=Federal-gov, relationship=Husband) => sex=Male
+c72: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Federal-gov", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD73: (workclass=Private, relationship=Husband, income=MoreThan50K, age=31-50) => maritalstatus=Married-civ-spouse
+c73: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $f1 == "Husband", $k1 == "MoreThan50K", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD74: (relationship=Husband, age=>50) => sex=Male
+c74: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $a1 == ">50", $h1 != "Male" -> #fail.
+//CFD75: (occupation=Transport-moving, relationship=Husband) => sex=Male
+c75: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Transport-moving", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD76: (workclass=Self-emp-not-inc, relationship=Husband) => sex=Male
+c76: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Self-emp-not-inc", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD77: (hoursperweek=40, occupation=Transport-moving, relationship=Husband) => maritalstatus=Married-civ-spouse
+c77: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $e1 == "Transport-moving", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD78: (workclass=?) => occupation=?
+c78: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "?", $e1 != "?" -> #fail.
+//CFD79: (education=7th-8th, relationship=Husband) => sex=Male
+c79: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "7th-8th", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD80: (workclass=Local-gov, relationship=Husband) => maritalstatus=Married-civ-spouse
+c80: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Local-gov", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD81: (maritalstatus=Never-married, education=HS-grad, age=18-21) => income=LessThan50K
+c81: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $c1 == "HS-grad", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD82: (maritalstatus=Never-married, occupation=Adm-clerical, age=18-21) => income=LessThan50K
+c82: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $e1 == "Adm-clerical", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD83: (maritalstatus=Never-married, sex=Male, country=United-States, relationship=Own-child, education=HS-grad, age=22-30) => income=LessThan50K
+c83: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $h1 == "Male", $j1 == "United-States", $f1 == "Own-child", $c1 == "HS-grad", $a1 == "22-30", $k1 != "LessThan50K" -> #fail.
+//CFD84: (race=Asian-Pac-Islander, relationship=Husband) => sex=Male
+c84: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "Asian-Pac-Islander", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD85: (income=LessThan50K, relationship=Husband, education=Bachelors) => maritalstatus=Married-civ-spouse
+c85: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $k1 == "LessThan50K", $f1 == "Husband", $c1 == "Bachelors", $d1 != "Married-civ-spouse" -> #fail.
+//CFD86: (race=Asian-Pac-Islander, relationship=Husband) => maritalstatus=Married-civ-spouse
+c86: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "Asian-Pac-Islander", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD87: (relationship=Husband, education=Masters) => maritalstatus=Married-civ-spouse
+c87: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Masters", $d1 != "Married-civ-spouse" -> #fail.
+//CFD88: (occupation=Handlers-cleaners, relationship=Husband) => maritalstatus=Married-civ-spouse
+c88: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Handlers-cleaners", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD89: (occupation=Machine-op-inspct, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c89: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Machine-op-inspct", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD90: (maritalstatus=Never-married, country=United-States, occupation=?, relationship=Own-child) => income=LessThan50K
+c90: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $j1 == "United-States", $e1 == "?", $f1 == "Own-child", $k1 != "LessThan50K" -> #fail.
+//CFD91: (occupation=Sales, relationship=Husband, income=MoreThan50K) => maritalstatus=Married-civ-spouse
+c91: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Sales", $f1 == "Husband", $k1 == "MoreThan50K", $d1 != "Married-civ-spouse" -> #fail.
+//CFD92: (occupation=Craft-repair, relationship=Husband, income=MoreThan50K, age=31-50) => maritalstatus=Married-civ-spouse
+c92: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Craft-repair", $f1 == "Husband", $k1 == "MoreThan50K", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD93: (country=United-States, income=LessThan50K, relationship=Wife) => sex=Female
+c93: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $j1 == "United-States", $k1 == "LessThan50K", $f1 == "Wife", $h1 != "Female" -> #fail.
+//CFD94: (relationship=Husband, hoursperweek=60, income=MoreThan50K) => maritalstatus=Married-civ-spouse
+c94: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $i1 == "60", $k1 == "MoreThan50K", $d1 != "Married-civ-spouse" -> #fail.
+//CFD95: (occupation=Exec-managerial, relationship=Husband) => sex=Male
+c95: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Exec-managerial", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD96: (relationship=Husband, income=MoreThan50K) => sex=Male
+c96: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $k1 == "MoreThan50K", $h1 != "Male" -> #fail.
+//CFD97: (country=United-States, relationship=Own-child, education=HS-grad, age=18-21) => income=LessThan50K
+c97: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $j1 == "United-States", $f1 == "Own-child", $c1 == "HS-grad", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD98: (workclass=Private, relationship=Husband, education=Bachelors) => maritalstatus=Married-civ-spouse
+c98: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "Private", $f1 == "Husband", $c1 == "Bachelors", $d1 != "Married-civ-spouse" -> #fail.
+//CFD99: (hoursperweek=40, occupation=Prof-specialty, relationship=Husband) => maritalstatus=Married-civ-spouse
+c99: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $e1 == "Prof-specialty", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD100: (hoursperweek=40, relationship=Husband, education=Bachelors) => maritalstatus=Married-civ-spouse
+c100: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $f1 == "Husband", $c1 == "Bachelors", $d1 != "Married-civ-spouse" -> #fail.
+//CFD101: (education=7th-8th, relationship=Husband) => maritalstatus=Married-civ-spouse
+c101: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $c1 == "7th-8th", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD102: (occupation=Sales, relationship=Husband, education=Bachelors) => maritalstatus=Married-civ-spouse
+c102: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Sales", $f1 == "Husband", $c1 == "Bachelors", $d1 != "Married-civ-spouse" -> #fail.
+//CFD103: (race=Black, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c103: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "Black", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD104: (workclass=?, relationship=Own-child, age=18-21) => income=LessThan50K
+c104: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "?", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD105: (age=<18) => income=LessThan50K
+c105: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $a1 == "<18", $k1 != "LessThan50K" -> #fail.
+//CFD106: (relationship=Husband, education=Masters) => sex=Male
+c106: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Husband", $c1 == "Masters", $h1 != "Male" -> #fail.
+//CFD107: (occupation=Transport-moving, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c107: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Transport-moving", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD108: (maritalstatus=Never-married, sex=Male, relationship=Own-child, occupation=Handlers-cleaners) => income=LessThan50K
+c108: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $h1 == "Male", $f1 == "Own-child", $e1 == "Handlers-cleaners", $k1 != "LessThan50K" -> #fail.
+//CFD109: (occupation=Adm-clerical, relationship=Husband, age=31-50) => maritalstatus=Married-civ-spouse
+c109: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Adm-clerical", $f1 == "Husband", $a1 == "31-50", $d1 != "Married-civ-spouse" -> #fail.
+//CFD110: (race=White, sex=Male, country=United-States, relationship=Own-child, age=18-21) => income=LessThan50K
+c110: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $g1 == "White", $h1 == "Male", $j1 == "United-States", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.
+//CFD111: (hoursperweek=40, occupation=Adm-clerical, relationship=Husband) => maritalstatus=Married-civ-spouse
+c111: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $i1 == "40", $e1 == "Adm-clerical", $f1 == "Husband", $d1 != "Married-civ-spouse" -> #fail.
+//CFD112: (relationship=Wife, income=MoreThan50K, age=31-50) => sex=Female
+c112: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $f1 == "Wife", $k1 == "MoreThan50K", $a1 == "31-50", $h1 != "Female" -> #fail.
+//CFD113: (workclass=?, relationship=Husband) => sex=Male
+c113: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $b1 == "?", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD114: (occupation=Handlers-cleaners, relationship=Husband) => sex=Male
+c114: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $e1 == "Handlers-cleaners", $f1 == "Husband", $h1 != "Male" -> #fail.
+//CFD115: (maritalstatus=Never-married, race=White, sex=Male, relationship=Own-child, age=18-21) => income=LessThan50K
+c115: adult(age: $a1, workclass: $b1, education: $c1, maritalstatus: $d1, occupation: $e1, relationship: $f1, race: $g1, sex: $h1, hoursperweek: $i1, country: $j1, income: $k1), $d1 == "Never-married", $g1 == "White", $h1 == "Male", $f1 == "Own-child", $a1 == "18-21", $k1 != "LessThan50K" -> #fail.

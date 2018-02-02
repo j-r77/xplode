@@ -1,0 +1,112 @@
+//CFD0: (g, f, c) => d
+c0: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $c1 == $c2, $d1 != $d2 -> #fail.
+//CFD1: (g, f, d) => c
+c1: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $d1 == $d2, $c1 != $c2 -> #fail.
+//CFD2: (g, e, a) => d
+c2: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $a1 == $a2, $d1 != $d2 -> #fail.
+//CFD3: (g, d, c) => a
+c3: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $c1 == $c2, $a1 != $a2 -> #fail.
+//CFD4: (g, f, c) => a
+c4: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $c1 == $c2, $a1 != $a2 -> #fail.
+//CFD5: (g, f, a) => c
+c5: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $a1 == $a2, $c1 != $c2 -> #fail.
+//CFD6: (g, c, a) => d
+c6: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $a1 == $a2, $d1 != $d2 -> #fail.
+//CFD7: (g, e, d) => c
+c7: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $d1 == $d2, $c1 != $c2 -> #fail.
+//CFD8: (f, d, c, a) => b
+c8: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $f1 == $f2, $d1 == $d2, $c1 == $c2, $a1 == $a2, $b1 != $b2 -> #fail.
+//CFD9: (g, e, b) => d
+c9: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $b1 == $b2, $d1 != $d2 -> #fail.
+//CFD10: (g, c, b) => f
+c10: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $b1 == $b2, $f1 != $f2 -> #fail.
+//CFD11: (g, e, c) => f
+c11: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $c1 == $c2, $f1 != $f2 -> #fail.
+//CFD12: (g, d, c) => f
+c12: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $c1 == $c2, $f1 != $f2 -> #fail.
+//CFD13: (g, f, b) => c
+c13: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $b1 == $b2, $c1 != $c2 -> #fail.
+//CFD14: (g, e, c) => a
+c14: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $c1 == $c2, $a1 != $a2 -> #fail.
+//CFD15: (g, e, b) => c
+c15: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $b1 == $b2, $c1 != $c2 -> #fail.
+//CFD16: (b, a) => d
+c16: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $b1 == $b2, $a1 == $a2, $d1 != $d2 -> #fail.
+//CFD17: (b, a) => e
+c17: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $b1 == $b2, $a1 == $a2, $e1 != $e2 -> #fail.
+//CFD18: (g, d, a) => b
+c18: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $a1 == $a2, $b1 != $b2 -> #fail.
+//CFD19: (g, f, c) => e
+c19: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $c1 == $c2, $e1 != $e2 -> #fail.
+//CFD20: (g, f, a) => d
+c20: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $a1 == $a2, $d1 != $d2 -> #fail.
+//CFD21: (b, a) => g
+c21: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $b1 == $b2, $a1 == $a2, $g1 != $g2 -> #fail.
+//CFD22: (g, f, b) => d
+c22: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $b1 == $b2, $d1 != $d2 -> #fail.
+//CFD23: (g, f, d) => b
+c23: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $d1 == $d2, $b1 != $b2 -> #fail.
+//CFD24: (g, f, b) => e
+c24: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $b1 == $b2, $e1 != $e2 -> #fail.
+//CFD25: (g, e, d) => b
+c25: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $d1 == $d2, $b1 != $b2 -> #fail.
+//CFD26: (g, f, b) => a
+c26: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $b1 == $b2, $a1 != $a2 -> #fail.
+//CFD27: (g, e, c) => d
+c27: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $c1 == $c2, $d1 != $d2 -> #fail.
+//CFD28: (g, e, c) => b
+c28: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $c1 == $c2, $b1 != $b2 -> #fail.
+//CFD29: (g, e, d) => a
+c29: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $d1 == $d2, $a1 != $a2 -> #fail.
+//CFD30: (g, c, b) => a
+c30: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $b1 == $b2, $a1 != $a2 -> #fail.
+//CFD31: (f, d, c, a) => g
+c31: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $f1 == $f2, $d1 == $d2, $c1 == $c2, $a1 == $a2, $g1 != $g2 -> #fail.
+//CFD32: (g, c, a) => e
+c32: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $a1 == $a2, $e1 != $e2 -> #fail.
+//CFD33: (g, e, d) => f
+c33: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $d1 == $d2, $f1 != $f2 -> #fail.
+//CFD34: (b, a) => c
+c34: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $b1 == $b2, $a1 == $a2, $c1 != $c2 -> #fail.
+//CFD35: (g, f, a) => b
+c35: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $a1 == $a2, $b1 != $b2 -> #fail.
+//CFD36: (g, e, a) => f
+c36: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $a1 == $a2, $f1 != $f2 -> #fail.
+//CFD37: (g, e, a) => c
+c37: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $a1 == $a2, $c1 != $c2 -> #fail.
+//CFD38: (g, e, b) => a
+c38: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $b1 == $b2, $a1 != $a2 -> #fail.
+//CFD39: (g, c, b) => e
+c39: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $b1 == $b2, $e1 != $e2 -> #fail.
+//CFD40: (g, d, c) => b
+c40: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $c1 == $c2, $b1 != $b2 -> #fail.
+//CFD41: (g, d, a) => c
+c41: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $a1 == $a2, $c1 != $c2 -> #fail.
+//CFD42: (g, f, d) => e
+c42: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $d1 == $d2, $e1 != $e2 -> #fail.
+//CFD43: (g, c, a) => f
+c43: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $a1 == $a2, $f1 != $f2 -> #fail.
+//CFD44: (g, c, a) => b
+c44: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $a1 == $a2, $b1 != $b2 -> #fail.
+//CFD45: (g, f, c) => b
+c45: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $c1 == $c2, $b1 != $b2 -> #fail.
+//CFD46: (g, c, b) => d
+c46: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $c1 == $c2, $b1 == $b2, $d1 != $d2 -> #fail.
+//CFD47: (g, d, a) => f
+c47: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $a1 == $a2, $f1 != $f2 -> #fail.
+//CFD48: (g, d, c) => e
+c48: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $c1 == $c2, $e1 != $e2 -> #fail.
+//CFD49: (g, e, b) => f
+c49: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $b1 == $b2, $f1 != $f2 -> #fail.
+//CFD50: (g, f, a) => e
+c50: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $a1 == $a2, $e1 != $e2 -> #fail.
+//CFD51: (f, d, c, a) => e
+c51: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $f1 == $f2, $d1 == $d2, $c1 == $c2, $a1 == $a2, $e1 != $e2 -> #fail.
+//CFD52: (g, f, d) => a
+c52: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $f1 == $f2, $d1 == $d2, $a1 != $a2 -> #fail.
+//CFD53: (g, e, a) => b
+c53: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $e1 == $e2, $a1 == $a2, $b1 != $b2 -> #fail.
+//CFD54: (g, d, a) => e
+c54: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $g1 == $g2, $d1 == $d2, $a1 == $a2, $e1 != $e2 -> #fail.
+//CFD55: (b, a) => f
+c55: sp500(a: $a1, b: $b1, c: $c1, d: $d1, e: $e1, f: $f1, g: $g1), sp500(a: $a2, b: $b2, c: $c2, d: $d2, e: $e2, f: $f2, g: $g2), $b1 == $b2, $a1 == $a2, $f1 != $f2 -> #fail.
