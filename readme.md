@@ -18,6 +18,7 @@ In the dirtysets/ subfolder, for each dataset there are 3 dirtied datasets, with
 The used CFDs can be found in the ${dataset}_cfds_order_x_.txt files. For the different experiments, the first _x_ cfds from these files were used.
 
 Statistics of the datasets:
+
 Dataset | Nr. Tuples | Nr. Attributes
 :--- | :--- | :---
 Abalone | 8354 | 9
