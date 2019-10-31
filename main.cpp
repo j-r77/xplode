@@ -7,6 +7,9 @@
 int main(int argc, char *argv[]) {
     if (argc != 5) {
         std::cout << "Usage: ./XPlode dirtyfile cleanfile epsilon delta" << std::endl;
+		std::cout << "\t where dirtyfile is a dirty dataset in csv format," << std::endl;
+		std::cout << "\t cleanfile is a (partially) cleaned version of this dataset," << std::endl;
+		std::cout << "\t and epsilon and delta are confidence and support parameters for the underlying rule mining algorithm"
         std::cout << "\t For Example: ./XPlode abalone-dirty.csv abalone-cleaned.csv 0.1 100" << std::endl;
     }
     else {
